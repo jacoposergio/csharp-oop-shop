@@ -20,7 +20,7 @@
 
 Prodotto prodottoUtente = new Prodotto("televisore", 50);
 prodottoUtente.SetIva(20);
-//prodottoUtente.SetDescrizione("Samsung Series 4 UE24N4300AU UHD Smart TV61cm (24'') 1366x768px LED Wi-Fi");
+prodottoUtente.SetDescrizione("Samsung Series 4 UE24N4300AU UHD Smart TV61cm (24'') 1366x768px LED Wi-Fi");
 prodottoUtente.Stampa();
 
 public class Prodotto
@@ -115,12 +115,10 @@ public class Prodotto
 
         for(int i = 0; i < arrayZeri.Length; i++)
         {
-            arrayZeri[i] = 0;
+            codiceStringa = '0' + codiceStringa;
         }
 
-        string arrayZeriStringa = arrayZeri.ToString();
-        string codiceCompleto = arrayZeriStringa + codiceStringa;
-        return codiceCompleto;
+        return codiceStringa;
     }
     public void Stampa()
     {
