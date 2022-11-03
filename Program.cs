@@ -20,97 +20,63 @@
 
 Prodotto prodottoUtente = new Prodotto("televisore", 50);
 prodottoUtente.SetIva(20);
-prodottoUtente.SetDescrizione("Samsung Series 4 UE24N4300AU UHD Smart TV61cm (24'') 1366x768px LED Wi-Fi");
+prodottoUtente.Descrizione ="Samsung Series 4 UE24N4300AU UHD Smart TV61cm (24'') 1366x768px LED Wi-Fi";
 prodottoUtente.Stampa();
 
 public class Prodotto
 {
-    private int codice;
-    private string nome;
-    private string descrizione;
-    private double prezzo;
-    private double iva;
+    public int Codice { get;}
+    public string Nome { get; set; }
+    public string Descrizione { get; set; }
+    public double Prezzo { get; set; }
+    public double Iva { get; set; }
 
     public Prodotto(string nome, double prezzo)
     {
-        this.nome = nome;
-        this.prezzo = prezzo;
-        descrizione = "nessuna descrizione disponibile";
-        codice = new Random().Next(1928, 8504);
+        this.Nome = nome;
+        this.Prezzo = prezzo;
+        Descrizione = "nessuna descrizione disponibile";
+        Codice = new Random().Next(1928, 8504);
     }
 
-    public double PrezzoBase()
-    {
-        return prezzo;
-    }
+    //public double PrezzoBase()
+    //{
+    //    return prezzo;
+    //}
 
     public double PrezzoIva()
     {
-        double prezzoConIva = prezzo + ((prezzo * iva)/ 100);
+        double prezzoConIva = Prezzo + ((Prezzo * Iva)/ 100);
         return prezzoConIva;
     }
 
     public string NomeEsteso()
     {
-        return codice + nome;
+        return Codice + Nome;
     }
 
-    public int GetCodice()
-    {
-        return this.codice;
-    }
-
-    public string GetNome()
-    {
-        return this.nome;
-    }
-
-    public void SetNome(string nome)
-    {
-      this.nome = nome;
-    }
-
-    public string Getdescrizione()
-    {
-        return this.descrizione;
-    }
-
-    public void SetDescrizione(string descrizione)
-    {
-        this.descrizione = descrizione;
-    }
-
-    public double GetPrezzo()
-    {
-        return this.prezzo;
-    }
 
     public void SetPrezzo(double prezzo)
     {
-        if(prezzo < 0)
+        if(Prezzo < 0)
         {
-            this.prezzo = 0;
+            this.Prezzo = 0;
         }
-        this.prezzo = prezzo;
+        this.Prezzo = Prezzo;
     }
 
-    public double GetIva()
-    {      
-        return this.iva;
-    }
-
-    public void SetIva(double iva)
+    public void SetIva(double Iva)
     {
-        if (iva <= 0)
+        if (Iva <= 0)
         {
-            this.iva = 1;
+            this.Iva = 1;
         }
-        this.iva = iva;
+        this.Iva = Iva;
     }
 
     public string PadLeft()
     {
-        string codiceStringa = codice.ToString();
+        string codiceStringa = Codice.ToString();
         int[] arrayZeri = new int[8 - codiceStringa.Length];
 
         for(int i = 0; i < arrayZeri.Length; i++)
@@ -122,11 +88,11 @@ public class Prodotto
     }
     public void Stampa()
     {
-        Console.WriteLine("codice: " + codice);
-        Console.WriteLine("nome: " + nome);
-        Console.WriteLine("descrizione: " + descrizione);
-        Console.WriteLine("prezzo: " + prezzo + " euro");
-        Console.WriteLine("iva: " + iva + "%");
+        Console.WriteLine("codice: " + Codice);
+        Console.WriteLine("nome: " + Nome);
+        Console.WriteLine("descrizione: " + Descrizione);
+        Console.WriteLine("prezzo: " + Prezzo + " euro");
+        Console.WriteLine("iva: " + Iva + "%");
         Console.WriteLine("prezzo con iva: " + PrezzoIva() + " euro");
         Console.WriteLine("nome esteso: " + NomeEsteso() );
         Console.WriteLine("il codice completo è: " + PadLeft());
